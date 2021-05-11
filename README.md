@@ -1,5 +1,5 @@
 # Find trending news from different sources all around the world
->## Author: [El-rophi Skwaila](https://github.com/Elrophi/News-Highlight)
+>## Author: [El-rophi Skwaila](https://github.com/Elrophi/NewsDjango)
 ---
 
 >Description
