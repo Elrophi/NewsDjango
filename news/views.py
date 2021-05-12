@@ -41,7 +41,7 @@ def search_results(request):
         return render(request, 'all-news/search.html', {'message':message, 'articles':searched_articles})
     else:
         message = 'No term searched'
-        return render(request, 'all-tech/search.html', {"message":message})
+        return render(request, 'all-news/search.html', {"message":message})
 
 def convert_dates(dates):
     # Function weekdays number
