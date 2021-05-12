@@ -1,4 +1,5 @@
 from django.core.checks import messages
+from django.core.exceptions import ObjectDoesNotExist, ViewDoesNotExist
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 import datetime as dt
@@ -37,10 +38,11 @@ def search_results(request):
         search_term = request.GET.get('article')
         searched_articles = Article.search_by_title(search_term)
         message = f'{search_term}'
-        return render(request, 'all-news/search.html', {'message:'message, 'articles':searched_articles})
-        else:
-            message = 'No term searched'
-            return render(request, 'all-tech/search.html', {"message":message})
+        return render(request, 'all-news/search.html', {'message':message, 'articles':searched_articles})
+    else:
+        message = 'No term searched'
+        return render(request, 'all-tech/search.html', {"message":message})
+
 def convert_dates(dates):
     # Function weekdays number
     day_number = dt.date.weekday(dates)
@@ -50,3 +52,9 @@ def convert_dates(dates):
     day = days[day_number]
     return day
 
+def article(request,article_id):
+    try:
+        article=Article.objects.get(id=article_id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    return render(request, 'all-news/article.html', {'article':article})
