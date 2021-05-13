@@ -119,6 +119,7 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
+*.env
 
 # Spyder project settings
 .spyderproject
@@ -152,4 +153,3 @@ Thumbs.db
 
 
 # End of https://www.toptal.com/developers/gitignore/api/python
-.env
