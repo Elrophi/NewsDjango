@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Editor(models.Model):
@@ -30,7 +31,7 @@ class Article(models.Model):
     editor = models.ForeignKey(Editor, on_delete=models.CASCADE)
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
-    article_image = models.ImageField(upload_to = 'articles/', null=True)
+    article_image = CloudinaryField('image', null=True)
 
     @classmethod
     def todays_news(cls):
@@ -47,3 +48,8 @@ class Article(models.Model):
     def search_by_title(cls, search_term):
         news = cls.objects.filter(title__icontains=search_term)
         return news
+
+class uploads(models.Model):
+    title = models.CharField(max_length=100)
+
+    image = CloudinaryField('image')

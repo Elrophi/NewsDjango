@@ -15,6 +15,9 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config, Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +40,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'news',
     'bootstrap5',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+cloudinary.config(
+    cloud_name = 'dfgpy7csp',
+    api_key = '321812322229413',
+    api_secret = 'W0PveFoMd21LNDSesA-GKketZrU',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
