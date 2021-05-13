@@ -81,17 +81,17 @@ WSGI_APPLICATION = 'tribune.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = 'SECRET_KEY'
+DEBUG = os.environ.get('DEBUG', False)
 # development
 if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('tribune'),
-           'USER': config('el'),
-           'PASSWORD': config('maigoge'),
-           'HOST': config('127.0.0.1'),
+           'NAME': 'tribune',
+           'USER': 'el',
+           'PASSWORD': 'maigoge',
+           'HOST': '127.0.0.1',
            'PORT': '',
        }
        
@@ -110,14 +110,14 @@ DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tribune',
-        'USER':  'el',
-        'PASSWORD': 'maigoge',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'tribune',
+#         'USER':  'el',
+#         'PASSWORD': 'maigoge',
+#     }
+# }
 
 
 # Password validation
