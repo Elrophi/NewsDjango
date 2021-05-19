@@ -1,13 +1,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-
-<nav class="navbar navbar-inverse bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand text-white" href="{% url 'newsToday' %}">The Moringa Tribune</a>
-      <a href="#" class="text-warning text-decoration-none active">Home</a>
-    </div>
-    <div class="col-sm-4 col-md-4 navbar-right">
-      <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+    <a class="navbar-brand text-white" href="{% url 'newsToday' %}">The Moringa Tribune</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" aria-current="page" href="accounts/register/">Register</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Account
+          </a>
+          {% if user.is_authenticated %}
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li class="dropdown">
+                    <ul role="menu" class="list-unstyled ">
+                        <li>
+                            <a href="{%url 'newsToday'%}" class="dropdown-item">News</a>
+                        </li>
+                        <li>
+                            <a href="accounts/password_change/" class="dropdown-item">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="logout/" class="dropdown-item">Logout</a>
+                        </li>
+                        <li>
+                            <a href="new-article/" class="dropdown-item">New-Article</a>
+                        </li>
+                    </ul>
+                    {% else %}
+                   <li class="">
+                       <a class='btn btn-secondary text-white ' href="/accounts/login">Login</a>
+                   </li>
+                  {% endif %}
+                </li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form d-flex" role="search" action="{% url 'search_results' %}">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search Article" name="article">
           <div class="input-group-btn">
@@ -17,4 +53,4 @@
       </form>
     </div>
   </div>
-</nav>    
+</nav>
