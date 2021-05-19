@@ -40,6 +40,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +50,6 @@ INSTALLED_APPS = [
     'tinymce',
     'news',
     'bootstrap5',
-    'cloudinary',
 ]
 
 cloudinary.config(
@@ -57,6 +57,7 @@ cloudinary.config(
     api_key = '321812322229413',
     api_secret = 'W0PveFoMd21LNDSesA-GKketZrU',
 )
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
